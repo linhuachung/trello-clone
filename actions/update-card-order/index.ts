@@ -1,43 +1,46 @@
 'use server'
 
-import {InputType, ReturnType} from "./type";
+import {InputType, ReturnType} from "./types";
 import {auth} from "@clerk/nextjs";
 import {db} from "@/lib/db";
 import {revalidatePath} from "next/cache";
 import {createSafeAction} from "@/lib/create-safe-action";
-import {DeleteList} from "./schema";
+import {UpdateListOrder} from "./schema";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
     const {userId, orgId} = auth()
-
     if (!userId || !orgId) {
         return {
             error: "Unauthorized"
         }
     }
 
-    const {id, boardId} = data
-    let list
+    const {items, boardId} = data
+    let lists
 
     try {
-        list = await db.list.delete({
+
+        const transaction = items.map(list => db.list.update({
             where: {
-                id,
-                boardId,
+                id: list.id,
                 board: {
                     orgId
                 }
             },
-        })
+            data: {
+                order: list.order
+            }
+        }))
+        lists = await db.$transaction(transaction)
     } catch (error) {
         return {
-            error: "Failed to delete."
+            error: "Failed to reorder."
         }
     }
 
     revalidatePath(`/board/${boardId}`)
-    return {data: list}
+    return {data: lists}
 }
 
 
-export const deleteList = createSafeAction(DeleteList, handler)
+export const updateListOrder = createSafeAction(UpdateListOrder, handler)

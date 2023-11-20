@@ -20,7 +20,6 @@ const handler = async (data: InputType): Promise<ReturnType> => {
     let list
 
     try {
-        console.log("sdfadffadsdfa")
         list = await db.list.update({
             where: {
                 id,
