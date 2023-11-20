@@ -7,7 +7,7 @@ import {MoreHorizontal, X} from "lucide-react";
 import {FormSubmit} from "@/components/form/form-submit";
 import {Separator} from "@/components/ui/separator";
 import {useAction} from "@/hooks/use-action";
-import {deleteList} from "@/actions/delete-board";
+import {deleteList} from "../../../../../../actions/delete-list";
 import {toast} from "sonner";
 import {copyList} from "@/actions/copy-list";
 

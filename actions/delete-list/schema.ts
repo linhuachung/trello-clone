@@ -1,6 +1,7 @@
 import {z} from "zod";
 
-export const DeleteBoard = z.object({
-    id: z.string()
+export const DeleteList = z.object({
+    id: z.string(),
+    boardId: z.string()
 })
 
