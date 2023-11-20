@@ -9,7 +9,9 @@ import {CreateBoard} from "@/actions/create-board/schema";
 
 const handler = async (data: InputType): Promise<ReturnType> => {
     const {userId, orgId} = auth()
-    if (!userId || !orgId) return {error: "Unauthorized"}
+    if (!userId || !orgId) {
+        return {error: "Unauthorized"}
+    }
 
     const {title, image} = data;
     const [
