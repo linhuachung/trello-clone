@@ -1,9 +1,9 @@
 import {z} from "zod";
-import {Card} from "@prisma/client";
+import {List} from "@prisma/client";
 
 import {ActionState} from "@/lib/create-safe-action";
 
-import {UpdateCardOrder} from "./schema";
+import {UpdateListOrder} from "./schema";
 
-export type InputType = z.infer<typeof UpdateCardOrder>;
-export type ReturnType = ActionState<InputType, Card[]>;
+export type InputType = z.infer<typeof UpdateListOrder>;
+export type ReturnType = ActionState<InputType, List[]>;
