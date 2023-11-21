@@ -18,7 +18,6 @@ interface HeaderProps {
 export const Header = ({data}: HeaderProps) => {
     const queryClient = useQueryClient()
     const params = useParams()
-
     const {execute} = useAction(updateCard, {
         onSuccess: (data) => {
             queryClient.invalidateQueries({
