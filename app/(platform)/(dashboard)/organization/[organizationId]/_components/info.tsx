@@ -10,9 +10,7 @@ interface InfoProps {
     isPro: boolean;
 }
 
-export const Info = ({
-                         isPro,
-                     }: InfoProps) => {
+export const Info = ({isPro}: InfoProps) => {
     const {organization, isLoaded} = useOrganization();
 
     if (!isLoaded) {
