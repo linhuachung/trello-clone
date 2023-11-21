@@ -72,11 +72,15 @@ export const Description = ({data}: DescriptionProps) => {
                     Description
                 </p>
                 {isEditing ? (
-                    <form action={onSubmit} ref={formRef} className="space-y-2">
+                    <form
+                        action={onSubmit}
+                        ref={formRef}
+                        className="space-y-2"
+                    >
                         <FormTextarea
-                            id={'description'}
+                            id="description"
                             className="w-full mt-2"
-                            placeholder={"Add a more detailed description"}
+                            placeholder="Add a more detailed description"
                             defaultValue={data.description || undefined}
                             errors={fieldErrors}
                             ref={textareaRef}
@@ -85,7 +89,12 @@ export const Description = ({data}: DescriptionProps) => {
                             <FormSubmit>
                                 Save
                             </FormSubmit>
-                            <Button type={"button"} onClick={disableEditing} size={"sm"} variant={"ghost"}>
+                            <Button
+                                type="button"
+                                onClick={disableEditing}
+                                size="sm"
+                                variant="ghost"
+                            >
                                 Cancel
                             </Button>
                         </div>
@@ -93,14 +102,13 @@ export const Description = ({data}: DescriptionProps) => {
                 ) : (
                     <div
                         onClick={enableEditing}
-                        role={"button"}
+                        role="button"
                         className="min-h-[78px] bg-neutral-200 text-sm font-medium py-3 px-3.5 rounded-md"
                     >
                         {data.description || "Add a more detailed description..."}
                     </div>
                 )}
             </div>
-            {data.description}
         </div>
     )
 };
