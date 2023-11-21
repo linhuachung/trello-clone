@@ -48,7 +48,7 @@ const ProModal = () => {
                         </ul>
                     </div>
                     <Button disabled={isLoading} onClick={onClick} className="w-full" variant={"primary"}>
-                        Upgrade
+                        Upgrade to Pro
                     </Button>
                 </div>
             </DialogContent>
