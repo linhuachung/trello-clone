@@ -52,6 +52,7 @@ export const Description = ({data}: DescriptionProps) => {
                 queryKey: ["card", data.id]
             })
             toast.success(`Card "${data.title}" updated`)
+            disableEditing()
         },
         onError: (error) => {
             toast.error(error)
